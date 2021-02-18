@@ -35,8 +35,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        dd($request);
+        return view('blog.store');
     }
 
     /**

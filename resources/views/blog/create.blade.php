@@ -9,7 +9,7 @@
 <body>
 
     <h1>Create post</h1>
-    <form action="{{ route('blog.store') }}" method="post">
+    <form action="{{route('blog.store')}}" method="post">
         @csrf
         <div class="form-group">
             <label for="title">Title</label>
