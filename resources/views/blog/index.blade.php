@@ -8,6 +8,8 @@
 </head>
 <body>
     
+    <h1>Boolean Blog</h1>
+    <a href="{{route('blog.create')}}">create a new post</a>
     <section class="posts_list">
             @foreach ($blog as $post)
             <div class="single_post">
