@@ -14,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $blog = Post::all();
-        return view("blog.index", compact("blog"));
+        $posts = Post::all();
+        return view("posts.index", compact("posts"));
     }
 
     /**
@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('posts.create');
     }
 
     /**
@@ -36,8 +36,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {   
-        dd($request);
-        return view('blog.store');
+        $post = new Post(); // --> dichiaro una nuova istanza dell'oggetto Post
+
+        $post->title = request("title"); // inserisco il titolo nella variabile
+        $post->body = request("body"); // inserisco il body nella variabile
+
+        /* dd("Ciao", request("title"), request("body")); */
+
+        $post->save(); // --> salvo il nuovo post
+
+        return redirect()->route("posts.index");
     }
 
     /**
