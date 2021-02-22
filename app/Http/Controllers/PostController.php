@@ -36,17 +36,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {   
-        $request->validate([
+        /* PRIMO METODO */
+        
+        $validateData = $request->validate([
             'title' => 'required|unique:posts|max:255',
             'body' => 'required',
         ]);
+
+        Post::create($validateData);
+
+        /* SECONDO METODO */
+
+        //$post = new Post(); // --> dichiaro una nuova istanza dell'oggetto Post
+        //$post->title = request("title"); // inserisco il titolo nella variabile
+        //$post->body = request("body"); // inserisco il body nella variabile
         
-        $post = new Post(); // --> dichiaro una nuova istanza dell'oggetto Post
-
-        $post->title = request("title"); // inserisco il titolo nella variabile
-        $post->body = request("body"); // inserisco il body nella variabile
-
-        /* dd("Ciao", request("title"), request("body")); */
 
         $post->save(); // --> salvo il nuovo post
 
