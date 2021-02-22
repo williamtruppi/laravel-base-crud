@@ -36,6 +36,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {   
+        $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+        
         $post = new Post(); // --> dichiaro una nuova istanza dell'oggetto Post
 
         $post->title = request("title"); // inserisco il titolo nella variabile
